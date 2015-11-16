@@ -133,12 +133,6 @@ document.body.appendChild(s);
   }
 
   var transformBehaviors = {
-    default: {
-      rotate: [-Math.PI, Math.PI],
-      translate: [-100, 100],
-      skew: [-10, 10],
-      scale: [0.5, 2]
-    },
     grow: {
       scale: [0.5, 2]
     },
@@ -152,18 +146,14 @@ document.body.appendChild(s);
       rotate: [-Math.PI, Math.PI]
     }
   }
+  transformBehaviors.default = mergeBehaviors(
+    transformBehaviors.grow,
+    transformBehaviors.tilt,
+    transformBehaviors.jitter,
+    transformBehaviors.rotate
+  )
 
   var filterBehaviors = {
-    default: {
-      blur: [0, 5],
-      brightness: [0, 1],
-      contrast: [0, 2],
-      grayscale: [0, 1],
-      invert: [0, 1],
-      saturate: [0, 2],
-      sepia: [0, 1],
-      hueRotate: [0, 360]
-    },
     blur: {
       blur: [0, 5]
     },
@@ -189,6 +179,11 @@ document.body.appendChild(s);
       hueRotate: [0, 360]
     }
   }
+  filterBehaviors.default = mergeBehaviors(
+    filterBehaviors.blur, filterBehaviors.brightness, filterBehaviors.contrast,
+    filterBehaviors.grayscale, filterBehaviors.invert, filterBehaviors.saturate,
+    filterBehaviors.sepia, filterBehaviors.hueRotate
+  )
 
   function mergeBehaviors() {
     var filters = []
