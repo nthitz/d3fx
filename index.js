@@ -189,12 +189,52 @@ document.body.appendChild(s);
     return finalFilter
   }
 
+  var imageSwapBehaviors = {
+    BILLMURRAY: 'http://www.fillmurray.com/',
+    VANILLAICE: 'http://nicenicejpg.com/',
+    KITTEN: 'http://placekitten.com/',
+    BEAR: 'http://placebear.com/',
+    BACON: 'http://baconmockup.com/',
+  }
+  function imageSwap(imageSwapBehavior) {
+    var maxSize = 1000
+    return function() {
+      var bb = this.getBoundingClientRect()
+      var width = bb.width
+      var height = bb.height
+      if (width >= height) {
+        if (width > maxSize) {
+          var shrinkRatio = maxSize / width
+          width = maxSize
+          height = shrinkRatio * height
+        }
+      } else {
+        if (height > maxSize) {
+          var shrinkRatio = maxSize / height
+          width = shrinkRatio * width
+          height = maxSize
+        }
+      }
+      var url = imageSwapBehavior + (~~width) + '/' + (~~height)
+      console.log(url)
+      d3.select(this)
+        .style('background-image', 'url(' + url + ')')
+        .style('background-size','cover')
+        .attr('src', null)
+    }
+  }
+
   w.d3fx = {
     transition: transition,
+
     transform: transform,
     TRANSFORM: transformBehaviors,
     filter: filter,
     FILTER: filterBehaviors,
+
+    imageSwap: imageSwap,
+    IMAGESWAP: imageSwapBehaviors,
+
     merge: mergeBehaviors,
   }
 })(window)
