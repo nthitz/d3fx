@@ -1,0 +1,14 @@
+{
+  "name": "d3fx",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nthitz/d3fx.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "d3": "^3.5.8"
+  }
+}
