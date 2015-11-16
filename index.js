@@ -174,15 +174,27 @@ document.body.appendChild(s);
     hueRotate: {
       hueRotate: [0, 360]
     }
-
-
-
   }
+
+  function mergeBehaviors() {
+    var filters = []
+    filters.push.apply(filters, arguments)
+
+    var finalFilter = {}
+    filters.forEach(function(filter) {
+      Object.keys(filter).forEach(function(filterKey) {
+        finalFilter[filterKey] = filter[filterKey]
+      })
+    })
+    return finalFilter
+  }
+
   w.d3fx = {
     transition: transition,
     transform: transform,
     TRANSFORMS: transformBehaviors,
     filter: filter,
-    FILTERS: filterBehaviors
+    FILTERS: filterBehaviors,
+    merge: mergeBehaviors,
   }
 })(window)
