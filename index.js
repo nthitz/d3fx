@@ -192,9 +192,9 @@ document.body.appendChild(s);
   w.d3fx = {
     transition: transition,
     transform: transform,
-    TRANSFORMS: transformBehaviors,
+    TRANSFORM: transformBehaviors,
     filter: filter,
-    FILTERS: filterBehaviors,
+    FILTER: filterBehaviors,
     merge: mergeBehaviors,
   }
 })(window)
