@@ -9,6 +9,7 @@
       s.src = '//d3js.org/d3.v3.min.js'
     }
     s.onload = init;
+    document.body.appendChild(s);
   } else {
     init()
   }
@@ -16,7 +17,6 @@
   function init() {
     transition()
   }
-  document.body.appendChild(s);
 
   var d3fxDuration = 1000
   var filterProperty = determineFilterPrefix()
