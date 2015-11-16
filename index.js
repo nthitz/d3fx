@@ -1,13 +1,19 @@
 (function(w) {
   var dev = false;
 
-  var s = document.createElement('script')
-  if (dev) {
-    s.src = 'http://localhost:8000/node_modules/d3/d3.js'
+  if (typeof w.d3 === 'undefined') {
+    var s = document.createElement('script')
+    if (dev) {
+      s.src = 'http://localhost:8000/node_modules/d3/d3.js'
+    } else {
+      s.src = '//d3js.org/d3.v3.min.js'
+    }
+    s.onload = init;
   } else {
-    s.src = '//d3js.org/d3.v3.min.js'
+    init()
   }
-  s.onload = function() {
+
+  function init() {
     transition()
   }
   document.body.appendChild(s);
