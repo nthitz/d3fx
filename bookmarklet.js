@@ -1,1 +1,1 @@
-javascript:(function()%7Bjavascript:var s%3Ddocument.createElement(%27script%27)%3Bs.setAttribute(%27src%27,%27http://localhost:8000/index.js%27)%3Bdocument.body.appendChild(s)%3B%7D)()%3B
+javascript:(function()%7Bjavascript:var s%3Ddocument.createElement(%27script%27)%3Bs.setAttribute(%27src%27,%27https://nthitz.github.io/d3fx/index.js%27)%3Bdocument.body.appendChild(s)%3B%7D)()%3B
