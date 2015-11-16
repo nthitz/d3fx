@@ -1,14 +1,17 @@
-var dev = false;
-
-var s = document.createElement('script')
-if (dev) {
-  s.src = 'http://localhost:8000/node_modules/d3/d3.js'
-} else {
-  s.src = '//d3js.org/d3.v3.min.js'
-}
-document.body.appendChild(s);
-
 (function(w) {
+  var dev = false;
+
+  var s = document.createElement('script')
+  if (dev) {
+    s.src = 'http://localhost:8000/node_modules/d3/d3.js'
+  } else {
+    s.src = '//d3js.org/d3.v3.min.js'
+  }
+  s.onload = function() {
+    transition()
+  }
+  document.body.appendChild(s);
+
   var d3fxDuration = 1000
   var filterProperty = determineFilterPrefix()
 
@@ -239,8 +242,6 @@ document.body.appendChild(s);
         .attr('src', null)
     }
   }
-
-  transition()
 
   w.d3fx = {
     transition: transition,
