@@ -33,10 +33,17 @@ document.body.appendChild(s);
       selector = '*'
     }
     if (arguments.length < 2) {
-      d3fxDuration = 1000
+      duration = 1000
     }
+    d3fxDuration = duration
+    d3.select('body').append('style')
+      .text('.d3fxTransition { transition: all ' + d3fxDuration + 'ms ease-in-out !important; }')
     d3.selectAll(selector)
-      .style('transition', 'all ' + d3fxDuration + 'ms ease-in-out')
+      .classed('d3fxTransition',true)
+  }
+
+  function untransition() {
+    d3.selectAll('.d3fxTransition').classed('d3fxTransition', false)
   }
 
   function transform(ranges) {
@@ -233,8 +240,11 @@ document.body.appendChild(s);
     }
   }
 
+  transition()
+
   w.d3fx = {
     transition: transition,
+    untransition: untransition,
 
     transform: transform,
     TRANSFORM: transformBehaviors,
