@@ -35,15 +35,19 @@ document.body.appendChild(s);
     if (arguments.length < 2) {
       d3fxDuration = 1000
     }
-    d3.selectAll(selector).style('transition', 'all ' + d3fxDuration + 'ms ease-in-out')
+    d3.selectAll(selector)
+      .style('transition', 'all ' + d3fxDuration + 'ms ease-in-out')
   }
 
   function transform(ranges) {
+    if (! ranges) {
+      ranges = {}
+    }
     var defaultRanges = {
       rotate: [0, 0],
       translate: [0, 0],
       skew: [0, 0],
-      scale: [0, 0]
+      scale: [1, 1]
     }
 
     Object.keys(ranges).forEach(function(rangeKey) {
@@ -52,6 +56,7 @@ document.body.appendChild(s);
     ranges = defaultRanges
 
     return function doIt() {
+      clearTimeout(this.getAttribute('transformTimeout'))
       var currentTransform = d3.transform(d3.select(this).style('transform'))
       var newTransform = {}
       Object.keys(ranges).forEach(function(rangeKey) {
@@ -70,13 +75,18 @@ document.body.appendChild(s);
         'rotate(' + newTransform.rotate + 'deg)' +
         'skewX(' + newTransform.skew + 'deg)' +
         'scale(' + newTransform.scale[0] + ',' + newTransform.scale[1] + ')'
-      console.log(transformString)
       d3.select(this).style('transform', transformString)
-      setTimeout(doIt.bind(this), d3fxDuration)
+      this.setAttribute(
+        'transformTimeout',
+        setTimeout(doIt.bind(this), d3fxDuration)
+      )
     }
   }
 
   function filter(ranges) {
+    if (! ranges) {
+      ranges = {}
+    }
     var defaultRanges = {
       blur: [0, 0],
       brightness: [1, 1],
@@ -98,6 +108,7 @@ document.body.appendChild(s);
     }
 
     return function doIt() {
+      clearTimeout(this.getAttribute('filterTimeout'))
       var newFilters = {}
       var f = Object.keys(ranges).reduce(function(filterString, rangeKey) {
         var range = ranges[rangeKey]
@@ -111,9 +122,12 @@ document.body.appendChild(s);
         filterString += propertyName + '(' + newValue + unit + ')'
         return filterString
       },'')
-      console.log(f)
       d3.select(this).style(filterProperty, f)
-      setTimeout(doIt.bind(this), d3fxDuration)
+      this.setAttribute(
+        'filterTimeout',
+        setTimeout(doIt.bind(this), d3fxDuration)
+      )
+
     }
 
   }
