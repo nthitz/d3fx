@@ -77,10 +77,7 @@
       var newTransform = {}
       Object.keys(ranges).forEach(function(rangeKey) {
         var range = ranges[rangeKey]
-        if (rangeKey === 'rotate') {
-          newTransform[rangeKey] =
-            currentTransform[rangeKey] + randomInRange(range)
-        } else if (rangeKey === 'skew') {
+        if (rangeKey === 'rotate' || rangeKey === 'skew') {
           newTransform[rangeKey] = randomInRange(range)
         } else {
           newTransform[rangeKey] = [randomInRange(range), randomInRange(range)]
@@ -88,7 +85,7 @@
       })
       var transformString = 'translate(' + newTransform.translate[0] + 'px,' +
          newTransform.translate[1] + 'px)' +
-        'rotate(' + newTransform.rotate + 'deg)' +
+        'rotate(' + newTransform.rotate + 'rad)' +
         'skewX(' + newTransform.skew + 'deg)' +
         'scale(' + newTransform.scale[0] + ',' + newTransform.scale[1] + ')'
       d3.select(this).style('transform', transformString)
@@ -159,7 +156,7 @@
       translate: [-100, 100],
     },
     rotate: {
-      rotate: [-Math.PI, Math.PI]
+      rotate: [-Math.PI / 2, Math.PI / 2]
     }
   }
   transformBehaviors.all = mergeBehaviors(
