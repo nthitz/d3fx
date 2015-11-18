@@ -162,7 +162,7 @@
       rotate: [-Math.PI, Math.PI]
     }
   }
-  transformBehaviors.default = mergeBehaviors(
+  transformBehaviors.all = mergeBehaviors(
     transformBehaviors.grow,
     transformBehaviors.tilt,
     transformBehaviors.jitter,
@@ -195,7 +195,7 @@
       hueRotate: [0, 360]
     }
   }
-  filterBehaviors.default = mergeBehaviors(
+  filterBehaviors.all = mergeBehaviors(
     filterBehaviors.blur, filterBehaviors.brightness, filterBehaviors.contrast,
     filterBehaviors.grayscale, filterBehaviors.invert, filterBehaviors.saturate,
     filterBehaviors.sepia, filterBehaviors.hueRotate
