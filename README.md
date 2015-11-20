@@ -4,9 +4,13 @@ Bookmarklet / Plugin for having some fun with d3.
 
 Fun transforms, filters, images and more.
 
-[https://nthitz.github.io/d3fx/](https://nthitz.github.io/d3fx/)
-
 MIT License
+
+# Install
+
+Directions to install here: [https://nthitz.github.io/d3fx/](https://nthitz.github.io/d3fx/)
+
+# Description
 
 d3fx is a small plugin/bookmarklet for d3 that allows you to more easily
 manipulate websites beyond your own in fun ways.
@@ -110,5 +114,32 @@ add Bill Murray images to all elements
       .each(d3fx.transform(d3fx.TRANSFORM.all))
       .each(d3fx.filter(d3fx.FILTER.all))
 
+###### Disclaimer I didn't really test any of the above examples for typos
 
-###### Disclaimer I didn't really test any of the above examples
+### Gallery
+
+Scale
+
+![Scale](https://nthitz.github.io/d3fx/images/scale.gif)
+
+Skew
+
+![Skew](https://nthitz.github.io/d3fx/images/skew.gif)
+
+Transform All
+
+![transform all](https://nthitz.github.io/d3fx/images/transformall.gif)
+
+Sepia
+
+![sepia](https://nthitz.github.io/d3fx/images/sepia.gif)
+
+Hue Rotate
+
+![hueRotate](https://nthitz.github.io/d3fx/images/hueRotate.gif)
+
+Image Swap
+
+![image swap](https://nthitz.github.io/d3fx/images/imageSwap.png)
+
+
