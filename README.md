@@ -118,6 +118,8 @@ add Bill Murray images to all elements
 
 ### Gallery
 
+These only scratch the surface as they really just select one element ;) You can do much more with more powerful selectors.
+
 Scale
 
 ![Scale](https://nthitz.github.io/d3fx/images/scale.gif)
